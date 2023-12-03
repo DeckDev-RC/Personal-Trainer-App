@@ -42,7 +42,7 @@ class _HomePageRoutesState extends State<HomePageRoutes> {
         },
         children: const [
           HomePage(),
-          SettingsPage(),
+          ProfilePage(),
         ],
       ),
       bottomNavigationBar: AnimatedContainer(
@@ -59,7 +59,7 @@ class _HomePageRoutesState extends State<HomePageRoutes> {
           },
           items: const [
             Icon(Icons.home, color: Colors.white),
-            Icon(Icons.settings, color: Colors.white),
+            Icon(Icons.person, color: Colors.white),
           ],
           height: 60,
           backgroundColor: Colors.transparent,

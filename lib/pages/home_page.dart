@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:workout_app/models/category_models.dart';
 import 'package:workout_app/models/tips_model.dart';
 import 'package:workout_app/models/trainer_models.dart';
-import 'package:workout_app/pages/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
