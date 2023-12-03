@@ -21,7 +21,11 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
     } on FirebaseAuthException catch (e) {
-      displayMessageToUser(e.code, context);
+      if (e.code.toString() == 'channel-error') {
+        return displayMessageToUser('Digite um email e senha válidos', context);
+      } else if (e.code.toString() == 'invalid credential') {
+        return displayMessageToUser('Email ou senha incorretos', context);
+      }
     }
   }
 
