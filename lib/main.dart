@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:workout_app/pages/home_page.dart';
-import 'package:workout_app/pages/login_page.dart';
 import 'package:workout_app/routes/home_page_routes.dart';
 
 void main() {

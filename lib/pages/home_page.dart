@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workout_app/models/category_models.dart';
+import 'package:workout_app/models/tips_model.dart';
 import 'package:workout_app/models/trainer_models.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,10 +14,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<CategoryModel> categories = [];
   List<TrainerModel> trainers = [];
+  List<TipsModel> tips = [];
 
   void _getInitialInfo() {
     categories = CategoryModel.getCategories();
     trainers = TrainerModel.getTrainers();
+    tips = TipsModel.getTips();
   }
 
   @override
@@ -35,13 +38,102 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           const SizedBox(height: 40),
           _categoriesSection(),
           const SizedBox(height: 40),
           _trainersSection(),
+          const SizedBox(height: 40),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Dicas',
+                  style: TextStyle(
+                    color: Colors.grey[200],
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              ListView.separated(
+                itemCount: tips.length,
+                shrinkWrap: true,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 25),
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: tips[index].boxIsSelected
+                          ? trainers[index].boxColor.withOpacity(0.3)
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: tips[index].boxIsSelected
+                          ? [
+                              BoxShadow(
+                                  color:
+                                      const Color(0xff1D1617).withOpacity(0.07),
+                                  offset: const Offset(0, 10),
+                                  blurRadius: 40,
+                                  spreadRadius: 0),
+                            ]
+                          : [],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          tips[index].iconPath,
+                          width: 65,
+                          height: 65,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              tips[index].name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              '${tips[index].level} | ${tips[index].duration} | ${tips[index].calorie}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[300],
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Image.asset(
+                            'assets/icons/arrow.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
+          const SizedBox(height: 40),
         ],
       ),
     );

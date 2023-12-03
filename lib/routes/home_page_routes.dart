@@ -64,7 +64,7 @@ class _HomePageRoutesState extends State<HomePageRoutes> {
           height: 60,
           backgroundColor: Colors.transparent,
           color: Colors.grey.shade900,
-          animationDuration: const Duration(milliseconds: 300),
+          animationDuration: const Duration(milliseconds: 200),
         ),
       ),
     );
