@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[700],
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: SafeArea(
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 25),
                   CircleAvatar(
-                    backgroundColor: Colors.grey[700],
+                    backgroundColor: Colors.grey[900],
                     radius: 60,
                     child: const Icon(
                       Icons.fitness_center_outlined,
